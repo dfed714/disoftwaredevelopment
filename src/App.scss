@@ -15,14 +15,15 @@ $grey: #d9d9d9;
 $dark-grey: #737373;
 $light-grey: #f4f4f4;
 $light-purple: #D5C2FA;
+$fs-xs: 16px;
 $fs-s: 18px;
 $fs-m: 24px;
 $fs-l: 36px;
-$fs-xl: 51px;
+$fs-xl: 47px;
 $fw-thin: 200;
 $fw-normal: 400;
 $fw-bold: 600;
-$standard-padding: min(40px, 5svw);
+$standard-padding: 20px;
 
 
 .App {
@@ -52,11 +53,11 @@ button:hover {
     .nav-btn {
         background: $grey;
         border: none;
-        font-size: $fs-m;
+        font-size: $fs-s;
         transition: all 500ms;
         padding: calc($standard-padding / 4);
         color: $black;
-        font-weight: $fw-thin;
+        font-weight: $fw-normal;
     }
 
     .nav-btn:not(.logo):hover {
@@ -85,72 +86,19 @@ button:hover {
     }
 }
 
-    // .home-body {
-    //     border: 1px solid red;
-    //     margin-inline: auto;
-    //     display: flex;
-    //     justify-content: center;
-    //     gap: 5svw;
-    //     padding-block: 80px;
-    //     align-items: center;
-    //     padding-left: $standard-padding;
-    //     position: relative;
-    //     border-bottom: 1px solid red;
-    //     overflow: clip;
-    
-    //     .text {
-    //         display: flex;
-    //         flex-direction: column;
-    //         justify-content: flex-start;
-    //         align-items: flex-start;
-            
-    //         h1 {
-    //             font-weight: $fw-normal;
-    //             font-size: $fs-xl;
-    //         }
-    
-    //         .highlight {
-    //             background-color: $purple;
-    //             transform: skewX(-7.5deg);
-    //             padding-inline: 20px;
-    //         }
-    
-    //         .cta {
-    //             background: none;
-    //             border: none;
-    //             border-bottom: 2px solid $purple;
-    //             font-size: $fs-m;
-    //             color: $purple;
-    //             font-weight: $fw-normal;
-    //             margin-top: 20px;
-    //         }
-    //     }
-    
-    //         img {
-    //             // width: 300px;
-    //             width: 450px;
-    //             object-fit: contain;
-    //             // position: absolute;
-    //             // bottom: 75px;
-    //             // right: 0px;
-    //             // left: 175px;
-    //             z-index: 2;
-    //         }
-    //     }
-
     // HOME
-    @media only screen and (max-width: 480px) {
+    @media only screen and (max-width: 420px) {
     .home-body {
         width: min(100svw, 480px);
-        height: calc(100svh - (4 * $standard-padding));
+        height: 100vh;
+        margin-top: calc(-4 * $standard-padding);
         margin-inline: auto;
         display: flex;
         justify-content: flex-start;
-        align-items: flex-start;
+        align-items: center;
         padding-left: $standard-padding;
         position: relative;
         overflow: clip;
-        margin-top: $standard-padding;
 
         .text {
             display: flex;
@@ -196,6 +144,10 @@ button:hover {
                 font-size: $fs-m;
                 color: $purple;
                 font-weight: $fw-normal;
+
+                i {
+                    font-size: $fs-s;
+                }
             }
         }
 
@@ -204,8 +156,7 @@ button:hover {
                 aspect-ratio: 1;
                 object-fit: contain;
                 z-index: 2;
-                transform: translate(calc(300px / -5), calc(300px / 3.5));
-                border: 1px solid red;
+                transform: translate(calc(-2.5 * $standard-padding), calc(3.5 * $standard-padding));
             }
         }
     }
@@ -216,7 +167,8 @@ button:hover {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: $standard-padding;
+            gap: calc(4 * $standard-padding);
+            margin-bottom: calc(4 * $standard-padding);
 
             .text {
                 display: flex;
@@ -238,21 +190,24 @@ button:hover {
             }
             
             .testimonial {
-                padding: calc(4 * $standard-padding) $standard-padding;
+                padding-inline: $standard-padding;
+                display: grid;
+                place-content: center;
                 blockquote {
+                    margin-bottom: $standard-padding;
                     font-size: $fs-l;
                     font-weight: $fw-normal;
                     text-align: center;
                     padding: $standard-padding;
-                    width: calc(100% - 20px);
+                    width: calc(100% - $standard-padding);
                     background-color: $purple;
                     line-height: 1.75em;
-                    box-shadow: 20px 20px 0px 0px rgba($light-purple, 0.5);
+                    box-shadow: $standard-padding $standard-padding 0px 0px rgba($light-purple, 0.5);
 
                     .highlight {
                         background-color: $white;
-                        padding: 10px 20px;
-                        line-height: calc(1.5em + 20px);
+                        padding: 10px $standard-padding;
+                        line-height: calc(1.5em + $standard-padding);
                     }
                 }
             }
@@ -262,26 +217,28 @@ button:hover {
     // SERVICES
     @media only screen and (max-width: 480px) {
         .services-body {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            h2 {
-                font-size: $fs-m;
-                color: $purple;
-                font-weight: $fw-normal;
-                padding-inline: $standard-padding;
-            }
+                display: flex;
+                flex-direction: column;
+                gap: $standard-padding;
+                background-color: $white;
+                h2 {
+                    color: $purple;
+                    font-size: $fs-m;
+                    font-weight: $fw-normal;
+                    padding-inline: $standard-padding;
+                }
 
-            h3 {
-                font-size: $fs-l;
-                font-weight: $fw-normal;
-                padding-inline: $standard-padding;
-                line-height: 1em;
-                margin-bottom: 20px;
-            }
+                h3 {
+                    font-size: $fs-l;
+                    font-weight: $fw-normal;
+                    line-height: 1em;
+                    margin-bottom: $standard-padding;
+                    padding-inline: $standard-padding;
+                }
 
             .service {
                 width: 100svw;
+                background-color: $white;
                 .service-img {
                     width: 100svw;
                     aspect-ratio: 4/3;
@@ -292,14 +249,18 @@ button:hover {
                 .text {
                     display: flex;
                     align-items: center;
-                    padding-block: 40px;
-                    padding-inline: $standard-padding;
+                    padding-block: (2 * $standard-padding) $standard-padding;
 
                     .service-description {
-                        width: calc(50svw + $standard-padding);
+                        width: calc($standard-padding + 50%);
+                        height: 100%;
                         text-align: left;
                         font-weight: $fw-normal;
+                        font-size: $fs-s;
                         color: $dark-grey;
+                        line-height: 1.5em;
+                        padding-inline: $standard-padding;
+
                     }
 
                     .icon-and-name {
@@ -307,26 +268,29 @@ button:hover {
                         flex-direction: column;
                         justify-content: center;
                         align-items: center;
-                        gap: 10px;
-                        width: calc(50svw - $standard-padding);
+                        gap: $standard-padding;
+                        height: 100%;
+                        width: calc(50% - $standard-padding);
+
 
                         .icon {
                             color: $black;
-                            width: 60px;
-                            height: 60px;
+                            width: calc( 4 * $standard-padding);
+                            height: calc( 4 * $standard-padding);
                             display: grid;
                             place-content: center;
                             background-color: $purple;
                             border-radius: 100%;
 
                             svg {
-                                width: 30px;
-                                height: 30px;
+                                width: calc( 2 * $standard-padding);
+                                height: calc( 2 * $standard-padding);
                             }
                         }
 
                         .service-name {
                             font-weight: $fw-normal;
+                            font-size: $fs-m;
                         }
                     }
                 }
@@ -336,4 +300,147 @@ button:hover {
 
     .row-reverse {
         flex-direction: row-reverse;
+    }
+
+//    PROJECTS
+    @media only screen and (max-width: 480px) { 
+        .projects-body {
+            display: flex;
+            flex-direction: column;
+            margin-block: calc(4 * $standard-padding);
+            gap: $standard-padding;
+            position: relative;
+
+            h2 {
+                color: $purple;
+                font-size: $fs-m;
+                font-weight: $fw-normal;
+                padding-inline: $standard-padding;
+            }
+
+            h3 {
+                font-size: $fs-l;
+                font-weight: $fw-normal;
+                line-height: 1em;
+                margin-bottom: $standard-padding;
+                padding-inline: $standard-padding;
+            }
+
+            .project-img {
+                width: 100%;
+                height: auto;
+                object-fit: contain;
+            }
+        }
+    }
+
+    // CONTACT
+    @media only screen and (max-width: 410px) {
+        .contact-body {
+            display: flex;
+            flex-direction: column;
+            padding-inline: $standard-padding;
+            align-items: center;
+            gap: $standard-padding;
+
+            h2 {
+                font-size: $fs-m;
+                text-align: center;
+                font-weight: $fw-normal;
+                color: $purple;
+            }
+
+            p {
+                font-size: $fs-l;
+                text-align: center;
+                font-weight: $fw-normal;
+                line-height: 1em;
+            }
+
+            .form {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                gap: $standard-padding;
+                width: 100%;
+                margin-top: calc( 2 * $standard-padding);
+                margin-bottom: calc( 4 * $standard-padding);
+
+                .form-section {
+                    width: 100%;
+                    font-size: $fs-m;
+
+                    input, textarea {
+                        width: 100%;
+                        background: none;
+                        border: none;
+                        padding-block: $standard-padding;
+                        border-bottom: 2px solid $purple;
+                        font-size: $fs-s;
+                        color: $dark-grey;
+                        font-weight: $fw-thin;
+                    }
+
+                }
+
+                .form-button {
+                    background-color: $light-purple;
+                    border-radius: 30px;
+                    border: 1px solid $light-purple;
+                    font-size: $fs-m;
+                    padding: 5px 30px;
+                    transition: all 500ms;
+                    margin-top: $standard-padding;
+                }
+
+                .form-button:hover {
+                    background-color: $purple;
+                    border-color: $purple;
+                }
+            }
+        }
+        
+    }
+
+    // FOOTER 
+
+    @media only screen and (max-width: 410px) {
+        .footer-body {
+            padding: $standard-padding;
+            padding-bottom: calc(4 * $standard-padding);
+            width: 100vw;
+            background-color: $light-purple;
+            border-top: 2px solid $purple;
+            display: flex;
+            flex-direction: column;
+            gap: calc( 2 * $standard-padding);
+            align-items: flex-start;
+            justify-content: flex-start;
+                
+            ul:not(.socials) {
+                list-style: none;
+                display: flex;
+                flex-direction: column;
+                gap: calc($standard-padding / 2);
+                align-items: flex-start;
+                justify-content: flex-start;
+            }
+            
+            .socials {
+                list-style: none;
+                display: flex;
+                gap: $standard-padding;
+                align-items: flex-start;
+                justify-content: flex-start;
+                color: $black;
+                font-size: $fs-s;
+            }
+            
+            li, a {
+                color: $black;
+                font-size: $fs-s;
+                font-weight: $fw-thin;
+            }
+        }
     }
