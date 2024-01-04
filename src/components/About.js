@@ -11,7 +11,9 @@ export default function About() {
       </div>
       <div className="testimonial">
         <blockquote>
-          "WORKING WITH DI WAS A TRULY{" "}
+          "WORKING WITH DI
+          <br /> WAS A TRULY
+          <br />
           <span className="highlight">REMARKABLE</span> EXPERIENCE!"
         </blockquote>
       </div>
