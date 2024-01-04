@@ -1,4 +1,5 @@
 import "../App.scss";
+import Slider from "./slider";
 import client from "../client";
 import imageUrlBuilder from "@sanity/image-url";
 import React, { useState, useEffect } from "react";
@@ -10,6 +11,14 @@ function urlFor(source) {
 
 export default function Projects() {
   const [projectData, setProject] = useState(null);
+
+  let slides = [];
+
+  const containerStyles = {
+    width: "calc(100vw - 40px)",
+    height: "220px",
+    margin: "0 auto",
+  };
 
   useEffect(() => {
     client
@@ -28,6 +37,7 @@ export default function Projects() {
       )
       .then((data) => {
         setProject(data);
+        console.log(projectData);
       })
       .catch(console.error);
   }, []);
@@ -37,15 +47,14 @@ export default function Projects() {
       <h3>Our track record speaks for itself</h3>
       {projectData &&
         projectData.map((project, index) => {
-          return (
-            <div className="project" key={index}>
-              <img
-                className="project-img"
-                src={project.image.asset.url}
-                alt={project.name}
-              />
-            </div>
-          );
+          slides.push(project.image.asset);
+          if (index < 1) {
+            return (
+              <div style={containerStyles} key={index}>
+                <Slider slides={slides} />
+              </div>
+            );
+          }
         })}
     </div>
   );

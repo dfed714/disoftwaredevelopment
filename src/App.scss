@@ -57,7 +57,7 @@ button:hover {
     background-color: $light-grey;
 
     .nav-btn {
-        background: $grey;
+        background: $purple;
         border: none;
         font-size: $fs-s;
         transition: all 500ms;
@@ -310,7 +310,7 @@ button:hover {
         flex-direction: row-reverse;
     }
 
-//    PROJECTS
+    //PROJECTS
     @media only screen and (max-width: 480px) { 
         .projects-body {
             display: flex;
@@ -333,13 +333,12 @@ button:hover {
                 margin-bottom: $standard-padding;
                 padding-inline: $standard-padding;
             }
-
-            .project-img {
-                width: 100%;
-                height: auto;
-                object-fit: contain;
-            }
+            
         }
+    }
+
+    //SLIDER
+    @media only screen and (max-width: 480px) {
     }
 
     // CONTACT
