@@ -17,6 +17,7 @@ export default function Services() {
         `*[_type == "services"]{
         name,
         icon,
+        viewBox,
         description,
         image{
             asset->{
@@ -28,13 +29,11 @@ export default function Services() {
       )
       .then((data) => {
         setService(data);
-        console.log(data[0].icon);
       })
       .catch(console.error);
   }, []);
   return (
     <div className="services-body">
-      <i className="fa-solid fa-mobile-screen icon"></i>
       <h2>OUR SERVICES</h2>
       <h3>Building software to help your business grow</h3>
       {serviceData &&
@@ -48,7 +47,10 @@ export default function Services() {
             <div className="text">
               <div className="icon-and-name">
                 <div className="icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox={service.viewBox}
+                  >
                     <path fill="#ffffff" d={service.icon} />
                   </svg>
                 </div>

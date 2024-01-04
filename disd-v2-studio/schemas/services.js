@@ -24,6 +24,11 @@ export default defineType({
       type: 'string',
     }),
     defineField({
+      name: 'viewBox',
+      title: 'viewBox',
+      type: 'string',
+    }),
+    defineField({
       name: 'description',
       title: 'Description',
       type: 'string',

@@ -48,7 +48,7 @@ button:hover {
     .nav-btn {
         background: $grey;
         border: none;
-        padding: 5px;
+        padding: 5px 10px;
         font-size: $fs-m;
         transition: all 500ms;
     }
@@ -244,7 +244,7 @@ button:hover {
         .services-body {
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 20px;
             h2 {
                 font-size: $fs-m;
                 color: $purple;
@@ -257,27 +257,64 @@ button:hover {
                 font-weight: $fw-normal;
                 padding-inline: $standard-padding;
                 line-height: 1em;
+                margin-bottom: 20px;
             }
 
             .service {
+                width: 100svw;
                 .service-img {
-                    max-width: 300px;
+                    width: 100svw;
+                    aspect-ratio: 4/3;
+                    object-fit: cover;
+                    object-position: center 65%;
                 }
 
-                .icon {
-                    color: black;
-                    width: 60px;
-                    height: 60px;
-                    display: grid;
-                    place-content: center;
-                    background-color: $purple;
-                    border-radius: 100%;
+                .text {
+                    display: flex;
+                    align-items: center;
+                    padding-block: 40px;
 
-                    svg {
-                        width: 40px;
-                        height: 40px;
+                    .service-description {
+                        width: 50svw;
+                        text-align: left;
+                        padding-right: $standard-padding;
+                        font-weight: $fw-normal;
+                        color: $dark-grey;
+                    }
+                    
+                    
+                    .icon-and-name {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+                        gap: 10px;
+                        width: 50svw;
+
+                        .icon {
+                            color: black;
+                            width: 60px;
+                            height: 60px;
+                            display: grid;
+                            place-content: center;
+                            background-color: $purple;
+                            border-radius: 100%;
+
+                            svg {
+                                width: 30px;
+                                height: 30px;
+                            }
+                        }
+
+                        .service-name {
+                            font-weight: $fw-normal;
+                        }
                     }
                 }
             }
         }
+    }
+
+    .row-reverse {
+        flex-direction: row-reverse;
     }
