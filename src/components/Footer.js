@@ -24,49 +24,37 @@ export default function Footer() {
           <ul className="socials">
             <li>
               <a
-                href="https://www.pinterest.co.uk/QueenPinOnline/"
+                href="https://danielfeddy.com"
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Social Media Link"
               >
                 <p>
-                  <i className="fab fa-pinterest-p"></i>
+                  <i className="fab fa-x-twitter"></i>
                 </p>
               </a>
             </li>
             <li>
               <a
-                href="https://www.instagram.com/queenpin.online/"
+                href="https://danielfeddy.com"
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Social Media Link"
               >
                 <p>
-                  <i className="fab fa-instagram"></i>
+                  <i className="fab fa-github"></i>
                 </p>
               </a>
             </li>
             <li>
               <a
-                href="https://www.linkedin.com/in/devorah-gurevich/"
+                href="https://www.linkedin.com/in/daniel-feddy-490612262/"
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Social Media Link"
               >
                 <p>
                   <i className="fab fa-linkedin-in"></i>
-                </p>
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://www.facebook.com/queenpin.va"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="Social Media Link"
-              >
-                <p>
-                  <i className="fab fa-facebook-f"></i>
                 </p>
               </a>
             </li>

@@ -48,7 +48,13 @@ button:hover {
     justify-content: space-between;
     align-items: center;
     padding: $standard-padding;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    right: 0;
+    top: 0;
     height: calc(4 * $standard-padding);
+    background-color: $light-grey;
 
     .nav-btn {
         background: $grey;
@@ -87,17 +93,16 @@ button:hover {
 }
 
     // HOME
-    @media only screen and (max-width: 420px) {
+    @media only screen and (max-width: 480px) {
     .home-body {
         width: min(100svw, 480px);
-        height: 100vh;
-        margin-top: calc(-4 * $standard-padding);
+        height: calc(100vh);
+        padding-top: calc(-4 * $standard-padding);
         margin-inline: auto;
         display: flex;
         justify-content: flex-start;
         align-items: center;
         padding-left: $standard-padding;
-        position: relative;
         overflow: clip;
 
         .text {
@@ -220,12 +225,15 @@ button:hover {
                 display: flex;
                 flex-direction: column;
                 gap: $standard-padding;
+                padding-top: calc( 4 * $standard-padding);
                 background-color: $white;
                 h2 {
                     color: $purple;
                     font-size: $fs-m;
                     font-weight: $fw-normal;
+                    line-height: 1em;
                     padding-inline: $standard-padding;
+                    margin-top: $standard-padding;
                 }
 
                 h3 {
@@ -335,7 +343,7 @@ button:hover {
     }
 
     // CONTACT
-    @media only screen and (max-width: 410px) {
+    @media only screen and (max-width: 480px) {
         .contact-body {
             display: flex;
             flex-direction: column;
@@ -376,7 +384,7 @@ button:hover {
                         background: none;
                         border: none;
                         padding-block: $standard-padding;
-                        border-bottom: 2px solid $purple;
+                        border-bottom: 2px solid $light-purple;
                         font-size: $fs-s;
                         color: $dark-grey;
                         font-weight: $fw-thin;
@@ -385,13 +393,14 @@ button:hover {
                 }
 
                 .form-button {
-                    background-color: $light-purple;
+                    background-color: $purple;
                     border-radius: 30px;
-                    border: 1px solid $light-purple;
+                    border: 1px solid $purple;
                     font-size: $fs-m;
                     padding: 5px 30px;
                     transition: all 500ms;
                     margin-top: $standard-padding;
+                    color: $white;
                 }
 
                 .form-button:hover {
@@ -405,7 +414,7 @@ button:hover {
 
     // FOOTER 
 
-    @media only screen and (max-width: 410px) {
+    @media only screen and (max-width: 480px) {
         .footer-body {
             padding: $standard-padding;
             padding-bottom: calc(4 * $standard-padding);
