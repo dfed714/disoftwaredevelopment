@@ -273,23 +273,22 @@ button:hover {
                     display: flex;
                     align-items: center;
                     padding-block: 40px;
+                    padding-inline: $standard-padding;
 
                     .service-description {
-                        width: 50svw;
+                        width: calc(50svw + $standard-padding);
                         text-align: left;
-                        padding-right: $standard-padding;
                         font-weight: $fw-normal;
                         color: $dark-grey;
                     }
-                    
-                    
+
                     .icon-and-name {
                         display: flex;
                         flex-direction: column;
                         justify-content: center;
                         align-items: center;
                         gap: 10px;
-                        width: 50svw;
+                        width: calc(50svw - $standard-padding);
 
                         .icon {
                             color: black;
