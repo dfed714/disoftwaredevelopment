@@ -16,12 +16,12 @@ $dark-grey: #737373;
 $light-grey: #f4f4f4;
 $light-purple: #D5C2FA;
 $fs-xs: 16px;
-$fs-s: 18px;
+$fs-s: 19px;
 $fs-m: 24px;
 $fs-l: 36px;
 $fs-xl: 47px;
 $fw-thin: 200;
-$fw-normal: 400;
+$fw-normal: 300;
 $fw-bold: 600;
 $standard-padding: 20px;
 
@@ -30,6 +30,7 @@ $standard-padding: 20px;
     background-color: $light-grey;
     display: flex;
     flex-direction: column;
+    overflow: clip;
 }
 
 * {
@@ -37,6 +38,7 @@ $standard-padding: 20px;
     margin: 0;
     padding: 0;
     font-family: Oswald;
+    letter-spacing: 0.01em;
 }
 
 button:hover {
@@ -77,6 +79,8 @@ button:hover {
         padding: 0;
         height: calc($fs-xl - 10px);
         width: calc(100%/4);
+        letter-spacing: -0.1em;
+        text-align: center;
     }
 
     @media only screen and (max-width: 1100px) {
@@ -117,7 +121,7 @@ button:hover {
                 font-size: $fs-xl;
                 padding: 0;
                 line-height: 1em;
-                letter-spacing: 0em;
+                letter-spacing: 0.01em;
             }
 
             .highlight {
@@ -134,11 +138,11 @@ button:hover {
                 display: block;
                 background-color: $purple;
                 transform: scale(1.07, 1.05) skewX(-15deg);
-                width: 100%;
-                height: 100%;
+                width: calc(100% + $standard-padding);
+                height: calc(100% + (0.5 * $standard-padding));
                 position: absolute;
-                left: 0;
-                bottom: 0;
+                left: calc(-0.5 * $standard-padding);
+                bottom: calc(-0.25 * $standard-padding);
                 z-index: -1;
             }
 
@@ -315,23 +319,37 @@ button:hover {
         .projects-body {
             display: flex;
             flex-direction: column;
+            align-items: center;
             margin-block: calc(4 * $standard-padding);
             gap: $standard-padding;
             position: relative;
 
             h2 {
                 color: $purple;
+                width: 100%;
                 font-size: $fs-m;
                 font-weight: $fw-normal;
                 padding-inline: $standard-padding;
+                text-align: left;
             }
 
             h3 {
                 font-size: $fs-l;
                 font-weight: $fw-normal;
                 line-height: 1em;
-                margin-bottom: $standard-padding;
                 padding-inline: $standard-padding;
+                width: 100%;
+                text-align: left;
+            }
+
+            p {
+                font-size: $fs-s;
+                font-weight: $fw-normal;
+                line-height: 1em;
+                padding-inline: $standard-padding;
+                width: 100%;
+                color: $dark-grey;
+                text-align: left;
             }
             
         }
@@ -339,6 +357,59 @@ button:hover {
 
     //SLIDER
     @media only screen and (max-width: 480px) {
+        .dot-container {
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            gap: calc( 0.5 * $standard-padding);
+            
+            .dot {
+                width: $standard-padding;
+                height: $standard-padding;
+                color: $purple;
+            }
+        }
+
+        .dot-active {
+            opacity: 0.5;
+        }
+
+        .slider-btns {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                padding-left: $standard-padding;
+                gap: $standard-padding;
+
+                button {
+                    width: calc($standard-padding * 2.5);
+                    height: calc($standard-padding * 2.5);
+                    display: grid;
+                    place-content: center;
+                    border-radius: 50%;
+                    border: 2px solid transparent;
+                    color: $purple;
+                    font-size: $fs-xl;
+                }
+            }
+        .slider {
+            width: calc(100% - (2 * $standard-padding));
+            aspect-ratio: 2/1;
+            display: flex;
+            align-items: flex-start;
+            // gap: calc( 2 * $standard-padding);
+            transition: all 500ms ease-in;
+            // overflow: clip;
+
+            
+
+            .slide {
+                width: 100%;
+                height: 100%;
+            }
+        }
     }
 
     // CONTACT
@@ -386,7 +457,7 @@ button:hover {
                         border-bottom: 2px solid $light-purple;
                         font-size: $fs-s;
                         color: $dark-grey;
-                        font-weight: $fw-thin;
+                        font-weight: $fw-normal;
                     }
 
                 }
@@ -448,7 +519,7 @@ button:hover {
             li, a {
                 color: $black;
                 font-size: $fs-s;
-                font-weight: $fw-thin;
+                font-weight: $fw-normal;
             }
         }
     }
