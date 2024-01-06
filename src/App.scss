@@ -8,6 +8,24 @@
     src: url(../public/fonts/Ahsing-Regular.otf);
 }
 
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fade-out {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
 $purple: #9b69ff;
 $black: #000000;
 $white: #FFFFFF;
@@ -38,7 +56,7 @@ $standard-padding: 20px;
     margin: 0;
     padding: 0;
     font-family: Oswald;
-    letter-spacing: 0.01em;
+    letter-spacing: 0.05em;
 }
 
 button:hover {
@@ -93,6 +111,39 @@ button:hover {
         .menu-btn {
             display: none !important;
         }
+    }
+}
+
+.menu {
+    position: fixed;
+    height: 100svh;
+    width: 100svw;
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: $standard-padding;
+    background-color: $light-grey;
+
+    .nav-btn, .x-out {
+        background: none;
+        border: none;
+        font-size: $fs-m;
+        color: $black;
+        font-weight: $fw-normal;
+        transition: all 500ms;
+        width: fit-content;
+    }
+
+    .nav-btn:hover, .x-out:hover {
+        font-weight: $fw-bold;
+    }
+
+    .x-out {
+        position: absolute;
+        top: $standard-padding;
+        right: $standard-padding;
     }
 }
 
@@ -399,16 +450,7 @@ button:hover {
             aspect-ratio: 2/1;
             display: flex;
             align-items: flex-start;
-            // gap: calc( 2 * $standard-padding);
             transition: all 500ms ease-in;
-            // overflow: clip;
-
-            
-
-            .slide {
-                width: 100%;
-                height: 100%;
-            }
         }
     }
 
@@ -522,4 +564,16 @@ button:hover {
                 font-weight: $fw-normal;
             }
         }
+    }
+
+    .display-none {
+        display: none !important;
+    }
+
+    .fade-out-animation {
+        animation: fade-out 250ms ease-in;
+    }
+
+    .fade-in-animation {
+        animation: fade-in 200ms ease-in;
     }

@@ -19,30 +19,31 @@ export default function Projects() {
     slider.current.style.transform = `translateX(calc(${slideIndex * -100}%`;
   }
 
-  const dotStylingFunc = () => {
+  const dotStylingFunc = (n) => {
     if (dots.current) {
       [...dots.current.children].forEach((x) =>
         x.classList.remove("dot-active")
       );
-      [...dots.current.children][slideIndex].classList.add("dot-active");
+      [...dots.current.children][slideIndex + n].classList.add("dot-active");
     }
   };
 
   const goToPreviousSlide = () => {
     if (slideIndex > 0) {
-      dotStylingFunc();
+      dotStylingFunc(-1);
       setSlideIndex(slideIndex - 1);
     }
   };
 
   const goToNextSlide = () => {
     if (slideIndex < slider.current.children.length - 1) {
-      dotStylingFunc();
+      dotStylingFunc(1);
       setSlideIndex(slideIndex + 1);
     }
   };
 
   const goToSlide = (i) => {
+    console.log(slideIndex);
     setSlideIndex(i);
   };
 
@@ -84,13 +85,21 @@ export default function Projects() {
       <div className="slider" ref={slider}>
         {projectData &&
           projectData.map((project, index) => {
+            const slideStyles = {
+              minWidth: "100%",
+              minHeight: "100%",
+              backgroundImage: `url(${project.image.asset.url})`,
+              backgroundSize: "contain",
+              backgroundPosition: "center center",
+              backgroundRepeat: "no-repeat",
+            };
             return (
-              <img
+              <a
                 key={index}
-                src={project.image.asset.url}
-                alt="Project"
-                className="slide"
-              />
+                href={project.url}
+                aria-label={`Link to ${project.name}`}
+                style={slideStyles}
+              ></a>
             );
           })}
       </div>
