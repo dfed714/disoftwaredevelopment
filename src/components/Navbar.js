@@ -7,12 +7,16 @@ export default function Navbar() {
   return (
     <>
       <header className="navbar">
-        <button className="nav-btn" aria-label="Get a quote">
-          QUOTE
-        </button>
-        <button className="nav-btn logo" aria-label="Home">
-          DI
-        </button>
+        <div className="nav-btn-container">
+          <button className="nav-btn" aria-label="Get a quote">
+            QUOTE
+          </button>
+        </div>
+        <div className="nav-btn-container">
+          <button className="nav-btn logo" aria-label="Home">
+            DI
+          </button>
+        </div>
         <div className="desktop-nav-btns">
           <button className="nav-btn" aria-label="Menu">
             SERVICES
@@ -24,17 +28,19 @@ export default function Navbar() {
             CONTACT
           </button>
         </div>
-        <button
-          className="menu-btn nav-btn"
-          aria-label="Menu"
-          onClick={() => {
-            menu.current.classList.add("fade-in-animation");
-            menu.current.classList.remove("fade-out-animation");
-            menu.current.classList.remove("display-none");
-          }}
-        >
-          MENU
-        </button>
+        <div className="nav-btn-container">
+          <button
+            className="menu-btn nav-btn"
+            aria-label="Menu"
+            onClick={() => {
+              menu.current.classList.add("fade-in-animation");
+              menu.current.classList.remove("fade-out-animation");
+              menu.current.classList.remove("display-none");
+            }}
+          >
+            MENU
+          </button>
+        </div>
       </header>
       <div className="menu display-none" ref={menu}>
         <button className="nav-btn" aria-label="Menu">

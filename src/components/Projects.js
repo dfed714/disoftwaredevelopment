@@ -105,23 +105,28 @@ export default function Projects() {
       </div>
       <div className="dot-container" ref={dots}>
         {projectData &&
-          projectData.map((project, index) => (
-            <div
-              className="dot"
-              key={index}
-              onClick={(e) => {
-                goToSlide(index);
-                [...e.target.parentElement.children].forEach((x) =>
-                  x.classList.remove("dot-active")
-                );
-                [...e.target.parentElement.children][
-                  [...e.target.parentElement.children].indexOf(e.target)
-                ].classList.add("dot-active");
-              }}
-            >
-              ●
-            </div>
-          ))}
+          projectData.map((project, index) => {
+            let dotStyling = {
+              opacity: `${index == 0 ? 0.5 : 1}`,
+            };
+            return (
+              <div
+                className="dot"
+                key={index}
+                onClick={(e) => {
+                  goToSlide(index);
+                  [...e.target.parentElement.children].forEach((x) =>
+                    x.classList.remove("dot-active")
+                  );
+                  [...e.target.parentElement.children][
+                    [...e.target.parentElement.children].indexOf(e.target)
+                  ].classList.add("dot-active");
+                }}
+              >
+                ●
+              </div>
+            );
+          })}
       </div>
     </div>
   );
