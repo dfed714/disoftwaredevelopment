@@ -48,7 +48,6 @@ $standard-padding: 20px;
     background-color: $light-grey;
     display: flex;
     flex-direction: column;
-    overflow: clip;
 }
 
 * {
@@ -473,7 +472,33 @@ button:hover {
             display: flex;
             align-items: flex-start;
             transition: all 500ms ease-in;
+            overflow: auto;
+            scroll-snap-type: x mandatory;
+            scroll-padding: 0;
+            margin-bottom: calc(-1 * $standard-padding);
+            scroll-behavior: smooth;
+
+            .slide {
+                scroll-snap-align: start;
+                height: 100%;
+            }
+
         }
+            
+            /*width*/
+            .slider::-webkit-scrollbar {
+                width: $standard-padding;
+            }
+            
+            /*track*/
+            .slider::-webkit-scrollbar-track {
+                background:transparent;
+            }
+            
+            /*thumb*/
+            .slider::-webkit-scrollbar-thumb {
+                background:transparent;
+            }
     }
 
     // CONTACT

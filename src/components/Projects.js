@@ -85,7 +85,6 @@ export default function Projects() {
       <div className="slider" ref={slider}>
         {projectData &&
           projectData.map((project, index) => {
-            let touchStart, touchEnd;
             const slideStyles = {
               minWidth: "100%",
               minHeight: "100%",
@@ -96,22 +95,11 @@ export default function Projects() {
             };
             return (
               <a
+                className="slide"
                 key={index}
                 href={project.url}
                 aria-label={`Link to ${project.name}`}
                 style={slideStyles}
-                onTouchStart={(e) => (touchStart = e.touches[0].pageX)}
-                onTouchMove={(e) => {
-                  touchEnd = e.changedTouches[0].pageX;
-                  console.log(touchStart, touchEnd);
-                  slider.current.style.marginRight = `${
-                    touchStart - touchEnd
-                  }px`;
-                }}
-                onTouchEnd={() => {
-                  slider.current.style.marginRight = `0px`;
-                  touchStart > touchEnd ? goToNextSlide() : goToPreviousSlide();
-                }}
               ></a>
             );
           })}
