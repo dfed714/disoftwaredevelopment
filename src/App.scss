@@ -159,8 +159,13 @@ button:hover {
 
     .x-out {
         position: absolute;
-        right: calc(2 * $standard-padding);
+        right: $standard-padding;
         top: $standard-padding;
+        color: $black;
+    }
+
+    .x-out:hover {
+        color: $dark-grey;
     }
 }
 

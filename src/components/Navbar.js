@@ -60,7 +60,7 @@ export default function Navbar() {
             setTimeout(() => menu.current.classList.add("display-none"), 200);
           }}
         >
-          X
+          <i className="fa-regular fa-circle-xmark"></i>
         </button>
       </div>
     </>
