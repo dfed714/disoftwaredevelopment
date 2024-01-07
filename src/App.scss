@@ -474,27 +474,25 @@ button:hover {
         }
 
         .slider {
-            width: calc(100% - (2 * $standard-padding));
-            aspect-ratio: 2/1;
+            width: 100%;
+            aspect-ratio: 1.75/1;
             display: flex;
             align-items: flex-start;
             transition: all 500ms ease-in;
             overflow-x: auto;
-            overflow-y: hidden;
             scroll-snap-type: x mandatory;
             scroll-padding: 0;
             scroll-behavior: smooth;
 
             .slide {
                 scroll-snap-align: start;
-                height: 100%;
             }
 
         }
             
             /*width*/
             .slider::-webkit-scrollbar {
-                width: $standard-padding;
+                height: calc($standard-padding / 3);
             }
             
             /*track*/
@@ -504,7 +502,8 @@ button:hover {
             
             /*thumb*/
             .slider::-webkit-scrollbar-thumb {
-                background:transparent;
+                background: $dark-grey;
+                border-radius: 20px;
             }
     }
 

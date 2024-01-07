@@ -43,7 +43,6 @@ export default function Projects() {
   };
 
   const goToSlide = (i) => {
-    console.log(slideIndex);
     setSlideIndex(i);
   };
 
@@ -87,10 +86,10 @@ export default function Projects() {
           projectData.map((project, index) => {
             const slideStyles = {
               minWidth: "100%",
-              minHeight: "100%",
+              height: "90%",
               backgroundImage: `url(${project.image.asset.url})`,
-              backgroundSize: "contain",
-              backgroundPosition: "center center",
+              backgroundSize: "cover",
+              backgroundPosition: "top center",
               backgroundRepeat: "no-repeat",
             };
             return (
