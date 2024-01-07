@@ -48,6 +48,7 @@ $standard-padding: 20px;
     background-color: $light-grey;
     display: flex;
     flex-direction: column;
+    overflow: clip;
 }
 
 * {
@@ -382,10 +383,6 @@ button:hover {
         }
     }
 
-    .row-reverse {
-        flex-direction: row-reverse;
-    }
-
     //PROJECTS
     @media only screen and (max-width: 480px) { 
         .projects-body {
@@ -428,54 +425,61 @@ button:hover {
     }
 
     //SLIDER
-    @media only screen and (max-width: 480px) {
-        .dot-container {
-            display: flex;
+
+    .dot-container {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        gap: calc( 0.5 * $standard-padding);
+        
+        .dot {
+            width: $standard-padding;
+            height: $standard-padding;
+            color: $purple;
+        }
+    }
+
+    .dot-active {
+        opacity: 0.5;
+    }
+
+    .slider-btns {
             width: 100%;
-            justify-content: center;
+            display: flex;
             align-items: center;
-            gap: calc( 0.5 * $standard-padding);
-            
-            .dot {
-                width: $standard-padding;
-                height: $standard-padding;
+            justify-content: flex-start;
+            padding-left: $standard-padding;
+            gap: $standard-padding;
+
+            button {
+                width: calc($standard-padding * 2.5);
+                height: calc($standard-padding * 2.5);
+                display: grid;
+                place-content: center;
+                border-radius: 50%;
+                border: 2px solid transparent;
                 color: $purple;
+                font-size: $fs-xl;
             }
+    }
+
+    @media only screen and (max-width: 480px) {
+
+        .dot-container, .slider-btns {
+            display: none !important;
         }
 
-        .dot-active {
-            opacity: 0.5;
-        }
-
-        .slider-btns {
-                width: 100%;
-                display: flex;
-                align-items: center;
-                justify-content: flex-start;
-                padding-left: $standard-padding;
-                gap: $standard-padding;
-
-                button {
-                    width: calc($standard-padding * 2.5);
-                    height: calc($standard-padding * 2.5);
-                    display: grid;
-                    place-content: center;
-                    border-radius: 50%;
-                    border: 2px solid transparent;
-                    color: $purple;
-                    font-size: $fs-xl;
-                }
-            }
         .slider {
             width: calc(100% - (2 * $standard-padding));
             aspect-ratio: 2/1;
             display: flex;
             align-items: flex-start;
             transition: all 500ms ease-in;
-            overflow: auto;
+            overflow-x: auto;
+            overflow-y: hidden;
             scroll-snap-type: x mandatory;
             scroll-padding: 0;
-            margin-bottom: calc(-1 * $standard-padding);
             scroll-behavior: smooth;
 
             .slide {
@@ -611,6 +615,10 @@ button:hover {
                 font-weight: $fw-normal;
             }
         }
+    }
+
+    .row-reverse {
+        flex-direction: row-reverse;
     }
 
     .display-none {
