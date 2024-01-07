@@ -3,12 +3,26 @@ import Contact from "./Contact";
 import "../App.scss";
 
 export default function Navbar() {
+  const xOutMenu = () => {
+    menu.current.classList.remove("fade-in-animation");
+    menu.current.classList.add("fade-out-animation");
+    setTimeout(() => menu.current.classList.add("display-none"), 200);
+  };
   const menu = useRef();
   return (
     <>
       <header className="navbar">
         <div className="nav-btn-container">
-          <button className="nav-btn" aria-label="Get a quote">
+          <button
+            className="nav-btn"
+            aria-label="Get a quote"
+            onClick={() =>
+              document.querySelector(".contact-body").scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+              })
+            }
+          >
             QUOTE
           </button>
         </div>
@@ -43,23 +57,46 @@ export default function Navbar() {
         </div>
       </header>
       <div className="menu display-none" ref={menu}>
-        <button className="nav-btn" aria-label="Menu">
-          SERVICES
-        </button>
-        <button className="nav-btn" aria-label="Menu">
-          TESTIMONIALS
-        </button>
-        <button className="nav-btn" aria-label="Menu">
-          CONTACT
-        </button>
         <button
-          className="x-out"
+          className="nav-btn"
+          aria-label="Menu"
           onClick={() => {
-            menu.current.classList.remove("fade-in-animation");
-            menu.current.classList.add("fade-out-animation");
-            setTimeout(() => menu.current.classList.add("display-none"), 200);
+            document.querySelector(".services-body").scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+            xOutMenu();
           }}
         >
+          SERVICES
+        </button>
+        <button
+          className="nav-btn"
+          aria-label="Menu"
+          onClick={() => {
+            document.querySelector(".projects-body").scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+            xOutMenu();
+          }}
+        >
+          TESTIMONIALS
+        </button>
+        <button
+          className="nav-btn"
+          aria-label="Menu"
+          onClick={() => {
+            document.querySelector(".contact-body").scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+            xOutMenu();
+          }}
+        >
+          CONTACT
+        </button>
+        <button className="x-out" onClick={xOutMenu}>
           <i className="fa-regular fa-circle-xmark"></i>
         </button>
       </div>

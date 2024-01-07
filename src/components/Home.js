@@ -8,7 +8,15 @@ export default function Home() {
         <h1 className="highlight">efficient</h1>
         <h1 className="non-highlight">way to</h1>
         <h1 className="highlight">develop</h1>
-        <button className="cta">
+        <button
+          className="cta"
+          onClick={() =>
+            document.querySelector(".about-body").scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            })
+          }
+        >
           Learn more <i className="fa-solid fa-arrow-down-long"></i>
         </button>
       </div>
