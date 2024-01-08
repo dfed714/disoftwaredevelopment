@@ -266,7 +266,7 @@ button:hover {
         justify-content: center;
         width: 100vw;
         gap: calc(4 * $standard-padding);
-        margin-bottom: calc(4 * $standard-padding);
+        margin-block: calc(4 * $standard-padding);
         background-color: $white;
         padding: calc(4 * $standard-padding);
 
@@ -340,7 +340,6 @@ button:hover {
             display: flex;
             flex-direction: column;
             gap: $standard-padding;
-            padding-top: calc( 4 * $standard-padding);
             scroll-margin-top: $standard-padding;
 
             .service-intro {
@@ -799,6 +798,12 @@ button:hover {
             }
         }
 
+    @media only screen and (min-width: 480px) {
+        .section {
+            padding-top: calc( 4 * $standard-padding);
+        }
+    }
+
     // UTILITY CLASSES
 
     .row-reverse {
@@ -819,4 +824,12 @@ button:hover {
 
     .hidden {
         opacity: 0.25;
+    }
+
+    .section {
+        transition: all 1.5s;
+    }
+
+    .section-hidden {
+        opacity: 0;
     }

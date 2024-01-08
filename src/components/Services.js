@@ -1,7 +1,7 @@
 import "../App.scss";
 import client from "../client";
 import imageUrlBuilder from "@sanity/image-url";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 const builder = imageUrlBuilder(client);
 function urlFor(source) {
@@ -9,6 +9,28 @@ function urlFor(source) {
 }
 
 export default function Services() {
+  const [isIntersecting, setIsIntersecting] = useState(false);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsIntersecting(entry.isIntersecting);
+      },
+      { threshold: 0.15 }
+    );
+    console.log(isIntersecting);
+    observer.observe(ref.current);
+
+    return () => observer.disconnect();
+  }, [isIntersecting]);
+
+  useEffect(() => {
+    if (isIntersecting) {
+      ref.current.classList.remove("section-hidden");
+    }
+  }, [isIntersecting]);
+
   const [serviceData, setService] = useState(null);
 
   useEffect(() => {
@@ -33,7 +55,7 @@ export default function Services() {
       .catch(console.error);
   }, []);
   return (
-    <div className="services-body">
+    <div className="services-body section section-hidden" ref={ref}>
       <div className="service-intro">
         <h2>OUR SERVICES</h2>
         <h3>Building software to help your business grow</h3>

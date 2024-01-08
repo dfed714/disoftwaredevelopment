@@ -1,8 +1,31 @@
 import "../App.scss";
+import React, { useState, useEffect, useRef } from "react";
 
 export default function Contact() {
+  const [isIntersecting, setIsIntersecting] = useState(false);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsIntersecting(entry.isIntersecting);
+      },
+      { threshold: 0.15 }
+    );
+    console.log(isIntersecting);
+    observer.observe(ref.current);
+
+    return () => observer.disconnect();
+  }, [isIntersecting]);
+
+  useEffect(() => {
+    if (isIntersecting) {
+      ref.current.classList.remove("section-hidden");
+    }
+  }, [isIntersecting]);
+
   return (
-    <div className="contact-body">
+    <div className="contact-body section section-hidden" ref={ref}>
       <h2>GET IN TOUCH NOW</h2>
       <p>Send us a message, we'd love to hear from you</p>
       <form

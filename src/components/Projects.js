@@ -10,6 +10,28 @@ function urlFor(source) {
 }
 
 export default function Projects() {
+  const [isIntersecting, setIsIntersecting] = useState(false);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsIntersecting(entry.isIntersecting);
+      },
+      { threshold: 0.15 }
+    );
+    console.log(isIntersecting);
+    observer.observe(ref.current);
+
+    return () => observer.disconnect();
+  }, [isIntersecting]);
+
+  useEffect(() => {
+    if (isIntersecting) {
+      ref.current.classList.remove("section-hidden");
+    }
+  }, [isIntersecting]);
+
   const [projectData, setProject] = useState(null);
   const [slideIndex, setSlideIndex] = useState(0);
 
@@ -76,7 +98,7 @@ export default function Projects() {
       .catch(console.error);
   }, []);
   return (
-    <div className="projects-body">
+    <div className="projects-body section section-hidden" ref={ref}>
       <h2>NOT SURE YET?</h2>
       <h3>Our track record speaks for itself</h3>
       <p className="swipe-msg">
