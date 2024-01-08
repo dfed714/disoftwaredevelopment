@@ -41,14 +41,14 @@ export default function Services() {
       {serviceData &&
         serviceData.map((service, index) => {
           let textRowClass;
-          if (index % 2 != 0 && window.screenX > 780) {
+          if (index % 2 != 0 && window.screenX < 800) {
             textRowClass = "text row-reverse";
           } else {
             textRowClass = "text";
           }
 
           let serviceRowClass;
-          if (index % 2 != 0 && window.screenX < 780) {
+          if (index % 2 != 0 && window.screenX < 800) {
             serviceRowClass = "service row-reverse";
           } else {
             serviceRowClass = "service";

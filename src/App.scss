@@ -38,6 +38,8 @@ $fs-s: 19px;
 $fs-m: 24px;
 $fs-l: 36px;
 $fs-xl: 47px;
+$fs-xxl: 77px;
+$fs-xxxl: 125px;
 $fw-thin: 200;
 $fw-normal: 300;
 $fw-bold: 600;
@@ -70,11 +72,7 @@ button:hover {
     justify-content: space-between;
     align-items: center;
     padding: $standard-padding;
-    position: fixed;
     z-index: 999;
-    left: 0;
-    right: 0;
-    top: 0;
     height: calc(4 * $standard-padding);
     background-color: $light-grey;
 
@@ -140,54 +138,51 @@ button:hover {
     }
 }
 
-.menu {
-    position: fixed;
-    height: 100vh;
-    width: 100vw;
-    z-index: 999;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: $standard-padding;
-    background-color: $light-grey;
+    .menu {
+        position: fixed;
+        height: 100vh;
+        width: 100vw;
+        z-index: 999;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: $standard-padding;
+        background-color: $light-grey;
 
-    .nav-btn, .x-out {
-        background: none;
-        border: none;
-        font-size: $fs-m;
-        color: $black;
-        font-weight: $fw-normal;
-        transition: all 500ms;
-        width: fit-content;
-    }
+        .nav-btn, .x-out {
+            background: none;
+            border: none;
+            font-size: $fs-m;
+            color: $black;
+            font-weight: $fw-normal;
+            transition: all 500ms;
+            width: fit-content;
+        }
 
-    .nav-btn:hover, .x-out:hover {
-        font-weight: $fw-bold;
-    }
+        .nav-btn:hover, .x-out:hover {
+            font-weight: $fw-bold;
+        }
 
-    .x-out {
-        position: absolute;
-        right: $standard-padding;
-        top: $standard-padding;
-        color: $black;
-    }
+        .x-out {
+            position: absolute;
+            right: $standard-padding;
+            top: $standard-padding;
+            color: $black;
+        }
 
-    .x-out:hover {
-        color: $dark-grey;
+        .x-out:hover {
+            color: $dark-grey;
+        }
     }
-}
 
     // HOME
     .home-body {
-        width: min(100svw, $mobile-width);
-        height: calc(100vh);
-        padding-top: calc(-4 * $standard-padding);
+        width: 100vw;
+        min-height: calc(100vh - (4 * $standard-padding));
         margin-inline: auto;
         display: flex;
-        justify-content: flex-start;
         align-items: center;
-        padding-left: $standard-padding;
         overflow: clip;
 
         .text {
@@ -199,7 +194,7 @@ button:hover {
             
             h1 {
                 font-weight: $fw-normal;
-                font-size: $fs-xl;
+                font-size: clamp($fs-xl, 10vw, $fs-xxxl);
                 padding: 0;
                 line-height: 1em;
                 letter-spacing: 0.01em;
@@ -208,8 +203,8 @@ button:hover {
             .highlight {
                 position: relative;
                 margin-left: 10px;
-                font-size: $fs-xl;
-                line-height: calc($standard-padding * 3);
+                font-size: clamp($fs-xl, 10vw, $fs-xxxl);
+                line-height: 1em;
                 z-index: 1;
                 font-weight: $fw-normal;
             }
@@ -220,10 +215,10 @@ button:hover {
                 background-color: $purple;
                 transform: scale(1.07, 1.05) skewX(-15deg);
                 width: calc(100% + $standard-padding);
-                height: calc(100% + (0.5 * $standard-padding));
+                height: 1.25em;
                 position: absolute;
                 left: calc(-0.5 * $standard-padding);
-                bottom: calc(-0.25 * $standard-padding);
+                bottom: -0.25em;
                 z-index: -1;
             }
 
@@ -234,6 +229,7 @@ button:hover {
                 font-size: $fs-m;
                 color: $purple;
                 font-weight: $fw-normal;
+                margin-top: 2.5vw;
 
                 i {
                     font-size: $fs-s;
@@ -250,12 +246,25 @@ button:hover {
             }
         }
 
+        @media only screen and (min-width: 479px) {
+            .home-body {
+                justify-content: center;
+            }
+        }
+
+        @media only screen and (max-width: 480px) {
+            .home-body {
+                justify-content: flex-start;
+                padding-left: calc(2 * $standard-padding);
+            }
+        }
     // ABOUT
     .about-body {
         scroll-margin-top: calc(4 * $standard-padding);
         display: flex;
         align-items: center;
         justify-content: center;
+        width: 100vw;
         gap: calc(4 * $standard-padding);
         margin-bottom: calc(4 * $standard-padding);
         background-color: $white;
@@ -307,7 +316,7 @@ button:hover {
     }
 
 
-    @media only screen and (max-width: $tablet-width) {
+    @media only screen and (max-width: 1100px) {
         .about-body {
             flex-direction: column;
             background-color: transparent;
@@ -327,95 +336,123 @@ button:hover {
     }
 
     // SERVICES
-    @media only screen and (max-width: $tablet-width) {
-        .services-body {
+    .services-body {
+            display: flex;
+            flex-direction: column;
+            gap: $standard-padding;
+            padding-top: calc( 4 * $standard-padding);
+            scroll-margin-top: $standard-padding;
+
+            .service-intro {
                 display: flex;
                 flex-direction: column;
+                align-items: flex-start;
+                justify-content: flex-start;
                 gap: $standard-padding;
-                padding-top: calc( 4 * $standard-padding);
-                scroll-margin-top: $standard-padding;
-                background-color: $white;
+                h2 {
+                    color: $purple;
+                    font-size: $fs-m;
+                    font-weight: $fw-normal;
+                    line-height: 1em;
+                    margin-top: $standard-padding;
+                }
+                
+                h3 {
+                    font-size: $fs-l;
+                    font-weight: $fw-normal;
+                    line-height: 1.25em;
+                    margin-bottom: $standard-padding;
+                }
+            }
+                
+        .service {
+            display: flex;
+            align-items: center;
+            width: 100vw;
+            .service-img {
+                max-height: 400px;
+                object-fit: cover;
+                object-position: center 65%;
+            }
 
-                .service-intro {
+            .text {
+                display: flex;
+                align-items: center;
+                padding: (2 * $standard-padding);
+                gap: $standard-padding;
+
+                .service-description {
+                    display: flex;
+                    justify-content: flex-start;
+                    height: 100%;
+                    font-weight: $fw-normal;
+                    font-size: $fs-s;
+                    color: $dark-grey;
+                    line-height: 1.5em;
+                    padding-inline: $standard-padding;
+                    max-width: 600px;
+                }
+
+                .icon-and-name {
                     display: flex;
                     flex-direction: column;
+                    justify-content: center;
                     gap: $standard-padding;
-                    h2 {
-                        color: $purple;
-                        font-size: $fs-m;
-                        font-weight: $fw-normal;
-                        line-height: 1em;
-                        padding-inline: $standard-padding;
-                        margin-top: $standard-padding;
+                    height: 100%;
+                    max-width: 600px;
+
+
+                    .icon {
+                        color: $black;
+                        width: calc( 3 * $standard-padding);
+                        height: calc( 3 * $standard-padding);
+                        display: grid;
+                        place-content: center;
+                        background-color: $purple;
+                        border-radius: 100%;
+
+                        svg {
+                            width: calc( 1.5 * $standard-padding);
+                            height: calc( 1.5 * $standard-padding);
+                        }
                     }
-                    
-                    h3 {
-                        font-size: $fs-l;
+
+                    .service-name {
                         font-weight: $fw-normal;
-                        line-height: 1.25em;
-                        margin-bottom: $standard-padding;
-                        padding-inline: $standard-padding;
+                        font-size: $fs-m;
                     }
                 }
-                    
+            }
+        }
+    }
+
+    @media only screen and (max-width: 800px) {
+        .services-body {
+            .service-intro {
+                padding-inline: $standard-padding;
+            }
             .service {
-                display: flex;
-                width: 100svw;
-                background-color: $white;
+                flex-direction: column;
+
                 .service-img {
                     width: 100%;
-                    aspect-ratio: 4/3;
-                    object-fit: cover;
-                    object-position: center 65%;
                 }
 
                 .text {
-                    display: flex;
                     align-items: center;
-                    padding-block: (2 * $standard-padding);
+                    padding: (2 * $standard-padding) (1 * $standard-padding);
 
                     .service-description {
-                        width: calc($standard-padding + 50%);
-                        display: flex;
+                        width: calc(60% + $standard-padding);
                         align-items: center;
-                        justify-content: flex-start;
-                        height: 100%;
-                        font-weight: $fw-normal;
-                        font-size: $fs-s;
-                        color: $dark-grey;
-                        line-height: 1.5em;
-                        padding-inline: $standard-padding;
-
                     }
 
                     .icon-and-name {
-                        display: flex;
-                        flex-direction: column;
-                        justify-content: center;
                         align-items: center;
-                        gap: $standard-padding;
-                        height: 100%;
-                        width: calc(50% - $standard-padding);
-
-
-                        .icon {
-                            color: $black;
-                            width: calc( 3 * $standard-padding);
-                            height: calc( 3 * $standard-padding);
-                            display: grid;
-                            place-content: center;
-                            background-color: $purple;
-                            border-radius: 100%;
-
-                            svg {
-                                width: calc( 1.5 * $standard-padding);
-                                height: calc( 1.5 * $standard-padding);
-                            }
-                        }
+                        width: calc(40% - $standard-padding);
 
                         .service-name {
-                            font-weight: $fw-normal;
-                            font-size: $fs-m;
+                            font-size: $fs-s;
                         }
                     }
                 }
@@ -423,16 +460,36 @@ button:hover {
         }
     }
 
-    @media only screen and (max-width: $tablet-width) {
+    @media only screen and (min-width: 800px) {
         .services-body {
+            .service-intro {
+                max-width: calc(100vw * (3/4));
+                margin-inline: auto;
+                width: 100%;
+            }
             .service {
+                margin-inline: auto;
+                .service-img {
+                    width: 50%;
+                    aspect-ratio: 4/3;
+                }
+            }
+            .text {
                 flex-direction: column;
+                align-items: center;
+                width: 100%;
+
+                .icon-and-name {
+                    align-items: flex-start;
+                    width: 100%;
+                    padding-inline: $standard-padding;
+                }
             }
         }
     }
 
 
-    @media only screen and (min-width: $tablet-width) {
+    @media only screen and (min-width: 800px) {
         .services-body {
             .service {
                 .service-img {
@@ -447,10 +504,10 @@ button:hover {
     }
 
     //PROJECTS
-    @media only screen and (max-width: $tablet-width) { 
         .projects-body {
             display: flex;
             flex-direction: column;
+            max-width: 1000px;
             align-items: center;
             margin-block: calc(4 * $standard-padding);
             scroll-margin-top: calc(4 * $standard-padding);
@@ -486,7 +543,6 @@ button:hover {
             }
             
         }
-    }
 
     //SLIDER
 
@@ -528,18 +584,11 @@ button:hover {
             }
     }
 
-    @media only screen and (max-width: $tablet-width) {
-
-        .dot-container, .slider-btns {
-            display: none !important;
-        }
-
         .slider {
             width: 100%;
             display: flex;
             align-items: flex-start;
             transition: all 500ms ease-in;
-            overflow-x: auto;
             scroll-snap-type: x mandatory;
             scroll-padding: 0;
             scroll-behavior: smooth;
@@ -555,9 +604,11 @@ button:hover {
                 align-items: flex-start;
                 justify-content: center;
                 gap: $standard-padding;
+                transition: all 750ms;
 
                 .slide-image {
                     width: 100vw;
+                    max-width: 1000px;
                     aspect-ratio: 1.9/1;
                     object-fit: cover;
                     object-position: top center;
@@ -616,10 +667,30 @@ button:hover {
                 border-radius: 20px;
             }
 
-    }
+            @media only screen and (min-width: 1000px) {
+                .projects-body {
+                    margin-inline: auto;
+                }
+
+                .swipe-msg {
+                    display: none !important;
+                }
+            }
+
+            @media only screen and (max-width: 1000px) {
+                .slider {
+                    overflow-x: auto;
+
+                    .slide-image {
+                        width: 100vw;
+                    }
+                }
+                .dot-container, .slider-btns {
+                    display: none !important;
+                }
+            }
 
     // CONTACT
-    @media only screen and (max-width: $tablet-width) {
         .contact-body {
             display: flex;
             flex-direction: column;
@@ -647,6 +718,7 @@ button:hover {
                 flex-direction: column;
                 align-items: center;
                 justify-content: flex-start;
+                max-width: 1000px;
                 gap: $standard-padding;
                 width: 100%;
                 margin-top: calc( 2 * $standard-padding);
@@ -687,11 +759,8 @@ button:hover {
             }
         }
         
-    }
-
     // FOOTER 
 
-    @media only screen and (max-width: $tablet-width) {
         .footer-body {
             padding: $standard-padding;
             padding-bottom: calc(4 * $standard-padding);
@@ -729,7 +798,6 @@ button:hover {
                 font-weight: $fw-normal;
             }
         }
-    }
 
     // UTILITY CLASSES
 
@@ -747,4 +815,8 @@ button:hover {
 
     .fade-in-animation {
         animation: fade-in 200ms ease-in;
+    }
+
+    .hidden {
+        opacity: 0.25;
     }

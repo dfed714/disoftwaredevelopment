@@ -79,7 +79,7 @@ export default function Projects() {
     <div className="projects-body">
       <h2>NOT SURE YET?</h2>
       <h3>Our track record speaks for itself</h3>
-      <p>
+      <p className="swipe-msg">
         Swipe through to see <i className="fa-solid fa-arrow-right-long"></i>
       </p>
       <div className="slider-btns">
