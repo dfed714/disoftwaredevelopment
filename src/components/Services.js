@@ -34,24 +34,33 @@ export default function Services() {
   }, []);
   return (
     <div className="services-body">
-      <h2>OUR SERVICES</h2>
-      <h3>Building software to help your business grow</h3>
+      <div className="service-intro">
+        <h2>OUR SERVICES</h2>
+        <h3>Building software to help your business grow</h3>
+      </div>
       {serviceData &&
         serviceData.map((service, index) => {
-          let rowClass;
-          if (index % 2 != 0) {
-            rowClass = "text row-reverse";
+          let textRowClass;
+          if (index % 2 != 0 && window.screenX > 780) {
+            textRowClass = "text row-reverse";
           } else {
-            rowClass = "text";
+            textRowClass = "text";
+          }
+
+          let serviceRowClass;
+          if (index % 2 != 0 && window.screenX < 780) {
+            serviceRowClass = "service row-reverse";
+          } else {
+            serviceRowClass = "service";
           }
           return (
-            <div className="service" key={index}>
+            <div className={serviceRowClass} key={index}>
               <img
                 className="service-img"
                 src={service.image.asset.url}
                 alt={service.name}
               />
-              <div className={rowClass}>
+              <div className={textRowClass}>
                 <div className="icon-and-name">
                   <div className="icon">
                     <svg

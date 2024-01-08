@@ -33,6 +33,8 @@ export default function Projects() {
     if (slideIndex > 0) {
       dotStylingFunc(-1);
       setSlideIndex(slideIndex - 1);
+      [...slider.current.children].forEach((x) => x.classList.add("hidden"));
+      [...slider.current.children][slideIndex - 1].classList.remove("hidden");
     }
   };
 
@@ -40,11 +42,16 @@ export default function Projects() {
     if (slideIndex < slider.current.children.length - 1) {
       dotStylingFunc(1);
       setSlideIndex(slideIndex + 1);
+      [...slider.current.children].forEach((x) => x.classList.add("hidden"));
+      [...slider.current.children][slideIndex + 1].classList.remove("hidden");
     }
   };
 
   const goToSlide = (i) => {
     setSlideIndex(i);
+    dotStylingFunc(slideIndex < i ? 1 : -1);
+    [...slider.current.children].forEach((x) => x.classList.add("hidden"));
+    [...slider.current.children][i].classList.remove("hidden");
   };
 
   useEffect(() => {
@@ -86,12 +93,14 @@ export default function Projects() {
       <div className="slider" ref={slider}>
         {projectData &&
           projectData.map((project, index) => {
+            let slideStyle;
+            slideStyle = "slide";
             return (
               <div
-                className="slide"
+                className={slideStyle}
                 key={index}
-                href={project.url}
                 aria-label={`Link to ${project.name}`}
+                onClick={(e) => goToSlide(index)}
               >
                 <img
                   src={project.image.asset.url}
@@ -105,6 +114,9 @@ export default function Projects() {
                   className={"slide-text"}
                 />
                 <p>{project.person}</p>
+                <a href={project.url} className="slide-link">
+                  Visit the webiste
+                </a>
               </div>
             );
           })}

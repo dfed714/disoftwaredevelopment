@@ -42,6 +42,8 @@ $fw-thin: 200;
 $fw-normal: 300;
 $fw-bold: 600;
 $standard-padding: 20px;
+$mobile-width: 480px;
+$tablet-width: 1100px;
 
 
 .App {
@@ -172,9 +174,9 @@ button:hover {
 }
 
     // HOME
-    @media only screen and (max-width: 480px) {
+    @media only screen and (max-width: $tablet-width) {
     .home-body {
-        width: min(100svw, 480px);
+        width: min(100svw, $mobile-width);
         height: calc(100vh);
         padding-top: calc(-4 * $standard-padding);
         margin-inline: auto;
@@ -246,7 +248,7 @@ button:hover {
     }
 
     // ABOUT
-    @media only screen and (max-width: 480px) {
+    @media only screen and (max-width: $tablet-width) {
         .about-body {
             scroll-margin-top: calc(4 * $standard-padding);
             display: flex;
@@ -259,6 +261,7 @@ button:hover {
                 display: flex;
                 flex-direction: column;
                 background-color: $white;
+                width: 100%;
                 padding: calc(4 * $standard-padding) $standard-padding;
                 gap: $standard-padding;
                 h2 {
@@ -270,7 +273,7 @@ button:hover {
                 p {
                     font-size: $fs-l;
                     font-weight: $fw-normal;
-                    line-height: 1em;
+                    line-height: 1.25em;
                 }
             }
             
@@ -300,7 +303,7 @@ button:hover {
     }
 
     // SERVICES
-    @media only screen and (max-width: 480px) {
+    @media only screen and (max-width: $tablet-width) {
         .services-body {
                 display: flex;
                 flex-direction: column;
@@ -308,28 +311,35 @@ button:hover {
                 padding-top: calc( 4 * $standard-padding);
                 scroll-margin-top: $standard-padding;
                 background-color: $white;
-                h2 {
-                    color: $purple;
-                    font-size: $fs-m;
-                    font-weight: $fw-normal;
-                    line-height: 1em;
-                    padding-inline: $standard-padding;
-                    margin-top: $standard-padding;
-                }
 
-                h3 {
-                    font-size: $fs-l;
-                    font-weight: $fw-normal;
-                    line-height: 1em;
-                    margin-bottom: $standard-padding;
-                    padding-inline: $standard-padding;
+                .service-intro {
+                    display: flex;
+                    flex-direction: column;
+                    gap: $standard-padding;
+                    h2 {
+                        color: $purple;
+                        font-size: $fs-m;
+                        font-weight: $fw-normal;
+                        line-height: 1em;
+                        padding-inline: $standard-padding;
+                        margin-top: $standard-padding;
+                    }
+                    
+                    h3 {
+                        font-size: $fs-l;
+                        font-weight: $fw-normal;
+                        line-height: 1.25em;
+                        margin-bottom: $standard-padding;
+                        padding-inline: $standard-padding;
+                    }
                 }
-
+                    
             .service {
+                display: flex;
                 width: 100svw;
                 background-color: $white;
                 .service-img {
-                    width: 100svw;
+                    width: 100%;
                     aspect-ratio: 4/3;
                     object-fit: cover;
                     object-position: center 65%;
@@ -338,12 +348,14 @@ button:hover {
                 .text {
                     display: flex;
                     align-items: center;
-                    padding-block: (2 * $standard-padding) $standard-padding;
+                    padding-block: (2 * $standard-padding);
 
                     .service-description {
                         width: calc($standard-padding + 50%);
+                        display: flex;
+                        align-items: center;
+                        justify-content: flex-start;
                         height: 100%;
-                        text-align: left;
                         font-weight: $fw-normal;
                         font-size: $fs-s;
                         color: $dark-grey;
@@ -364,16 +376,16 @@ button:hover {
 
                         .icon {
                             color: $black;
-                            width: calc( 4 * $standard-padding);
-                            height: calc( 4 * $standard-padding);
+                            width: calc( 3 * $standard-padding);
+                            height: calc( 3 * $standard-padding);
                             display: grid;
                             place-content: center;
                             background-color: $purple;
                             border-radius: 100%;
 
                             svg {
-                                width: calc( 2 * $standard-padding);
-                                height: calc( 2 * $standard-padding);
+                                width: calc( 1.5 * $standard-padding);
+                                height: calc( 1.5 * $standard-padding);
                             }
                         }
 
@@ -387,8 +399,31 @@ button:hover {
         }
     }
 
+    @media only screen and (max-width: $tablet-width) {
+        .services-body {
+            .service {
+                flex-direction: column;
+            }
+        }
+    }
+
+
+    @media only screen and (min-width: $tablet-width) {
+        .services-body {
+            .service {
+                .service-img {
+                    width: 50%;
+                }
+
+                .text {
+                    width: 50%;
+                }
+            }
+        }
+    }
+
     //PROJECTS
-    @media only screen and (max-width: 480px) { 
+    @media only screen and (max-width: $tablet-width) { 
         .projects-body {
             display: flex;
             flex-direction: column;
@@ -410,7 +445,7 @@ button:hover {
             h3 {
                 font-size: $fs-l;
                 font-weight: $fw-normal;
-                line-height: 1em;
+                line-height: 1.25em;
                 padding-inline: $standard-padding;
                 width: 100%;
                 text-align: left;
@@ -469,7 +504,7 @@ button:hover {
             }
     }
 
-    @media only screen and (max-width: 480px) {
+    @media only screen and (max-width: $tablet-width) {
 
         .dot-container, .slider-btns {
             display: none !important;
@@ -493,7 +528,7 @@ button:hover {
                 width: 100%;
                 display: flex;
                 flex-direction: column;
-                align-items: center;
+                align-items: flex-start;
                 justify-content: center;
                 gap: $standard-padding;
 
@@ -515,8 +550,18 @@ button:hover {
                     font-size: $fs-s;
                     color: $black;
                     font-weight: $fw-normal;
-                    padding-bottom: calc(2 * $standard-padding);
+                }
 
+                .slide-link {
+                    text-decoration: none;
+                    font-size: $fs-xs;
+                    color: $white;
+                    font-weight: $fw-normal;
+                    background-color: $purple;
+                    padding: calc(0.5 * $standard-padding) $standard-padding;
+                    border-radius: 30px;
+                    margin-left: $standard-padding;
+                    margin-bottom: $standard-padding;
                 }
 
                 p:first-of-type:before {
@@ -550,7 +595,7 @@ button:hover {
     }
 
     // CONTACT
-    @media only screen and (max-width: 480px) {
+    @media only screen and (max-width: $tablet-width) {
         .contact-body {
             display: flex;
             flex-direction: column;
@@ -570,7 +615,7 @@ button:hover {
                 font-size: $fs-l;
                 text-align: center;
                 font-weight: $fw-normal;
-                line-height: 1em;
+                line-height: 1.25em;
             }
 
             .form {
@@ -591,7 +636,7 @@ button:hover {
                         width: 100%;
                         background: none;
                         border: none;
-                        padding-block: $standard-padding;
+                        padding: $standard-padding;
                         border-bottom: 2px solid $light-purple;
                         font-size: $fs-s;
                         color: $dark-grey;
@@ -622,7 +667,7 @@ button:hover {
 
     // FOOTER 
 
-    @media only screen and (max-width: 480px) {
+    @media only screen and (max-width: $tablet-width) {
         .footer-body {
             padding: $standard-padding;
             padding-bottom: calc(4 * $standard-padding);

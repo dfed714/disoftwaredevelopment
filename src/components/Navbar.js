@@ -9,6 +9,14 @@ export default function Navbar() {
     setTimeout(() => menu.current.classList.add("display-none"), 200);
   };
   const menu = useRef();
+
+  const navFunc = (n) => {
+    document.querySelector(`.${n}-body`).scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+    xOutMenu();
+  };
   return (
     <>
       <header className="navbar">
@@ -16,12 +24,7 @@ export default function Navbar() {
           <button
             className="nav-btn"
             aria-label="Get a quote"
-            onClick={() =>
-              document.querySelector(".contact-body").scrollIntoView({
-                behavior: "smooth",
-                block: "start",
-              })
-            }
+            onClick={() => navFunc("contact")}
           >
             QUOTE
           </button>
@@ -32,13 +35,25 @@ export default function Navbar() {
           </button>
         </div>
         <div className="desktop-nav-btns">
-          <button className="nav-btn" aria-label="Menu">
+          <button
+            className="nav-btn"
+            aria-label="Menu"
+            onClick={() => navFunc("services")}
+          >
             SERVICES
           </button>
-          <button className="nav-btn" aria-label="Menu">
+          <button
+            className="nav-btn"
+            aria-label="Menu"
+            onClick={() => navFunc("projects")}
+          >
             TESTIMONIALS
           </button>
-          <button className="nav-btn" aria-label="Menu">
+          <button
+            className="nav-btn"
+            aria-label="Menu"
+            onClick={() => navFunc("contact")}
+          >
             CONTACT
           </button>
         </div>
@@ -60,39 +75,21 @@ export default function Navbar() {
         <button
           className="nav-btn"
           aria-label="Menu"
-          onClick={() => {
-            document.querySelector(".services-body").scrollIntoView({
-              behavior: "smooth",
-              block: "start",
-            });
-            xOutMenu();
-          }}
+          onClick={() => navFunc("services")}
         >
           SERVICES
         </button>
         <button
           className="nav-btn"
           aria-label="Menu"
-          onClick={() => {
-            document.querySelector(".projects-body").scrollIntoView({
-              behavior: "smooth",
-              block: "start",
-            });
-            xOutMenu();
-          }}
+          onClick={() => navFunc("projects")}
         >
           TESTIMONIALS
         </button>
         <button
           className="nav-btn"
           aria-label="Menu"
-          onClick={() => {
-            document.querySelector(".contact-body").scrollIntoView({
-              behavior: "smooth",
-              block: "start",
-            });
-            xOutMenu();
-          }}
+          onClick={() => navFunc("contact")}
         >
           CONTACT
         </button>
