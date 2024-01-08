@@ -78,7 +78,7 @@ button:hover {
     height: calc(4 * $standard-padding);
     background-color: $light-grey;
 
-    .nav-btn-container {
+    .nav-btn-container, .desktop-nav-btns {
         width: calc(100% / 3);
         display: flex;
         align-items: center;
@@ -94,6 +94,11 @@ button:hover {
 
     .nav-btn-container:last-of-type {
         justify-content: flex-end;
+    }
+
+    .desktop-nav-btns {
+        justify-content: flex-end;
+        gap: $standard-padding;
     }
 
     .nav-btn {
@@ -129,7 +134,7 @@ button:hover {
     }
 
     @media only screen and (min-width: 1101px) {
-        .menu-btn {
+        .nav-btn-container:last-of-type  {
             display: none !important;
         }
     }
@@ -174,7 +179,6 @@ button:hover {
 }
 
     // HOME
-    @media only screen and (max-width: $tablet-width) {
     .home-body {
         width: min(100svw, $mobile-width);
         height: calc(100vh);
@@ -245,59 +249,79 @@ button:hover {
                 transform: translate(calc(-2.5 * $standard-padding), calc(3.5 * $standard-padding));
             }
         }
-    }
 
     // ABOUT
-    @media only screen and (max-width: $tablet-width) {
-        .about-body {
-            scroll-margin-top: calc(4 * $standard-padding);
+    .about-body {
+        scroll-margin-top: calc(4 * $standard-padding);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: calc(4 * $standard-padding);
+        margin-bottom: calc(4 * $standard-padding);
+        background-color: $white;
+        padding: calc(4 * $standard-padding);
+
+        .text {
             display: flex;
             flex-direction: column;
-            align-items: center;
-            gap: calc(4 * $standard-padding);
-            margin-bottom: calc(4 * $standard-padding);
+            width: 50%;
+            gap: $standard-padding;
+            max-width: 500px;
+            h2 {
+                color: $purple;
+                font-size: $fs-m;
+                font-weight: $fw-normal;
+            }
 
-            .text {
-                display: flex;
-                flex-direction: column;
-                background-color: $white;
-                width: 100%;
-                padding: calc(4 * $standard-padding) $standard-padding;
-                gap: $standard-padding;
-                h2 {
-                    color: $purple;
-                    font-size: $fs-m;
-                    font-weight: $fw-normal;
-                }
+            p {
+                font-size: $fs-l;
+                font-weight: $fw-normal;
+                line-height: 1.25em;
+            }
+        }
+        
+        .testimonial {
+            padding-inline: $standard-padding;
+            display: grid;
+            place-content: center;
+            width: 50%;
+            max-width: 500px;
+            blockquote {
+                margin-bottom: $standard-padding;
+                font-size: $fs-l;
+                font-weight: $fw-normal;
+                text-align: center;
+                padding: $standard-padding;
+                width: calc(100% - $standard-padding);
+                background-color: $purple;
+                line-height: 1.75em;
+                box-shadow: $standard-padding $standard-padding 0px 0px rgba($light-purple, 0.5);
 
-                p {
-                    font-size: $fs-l;
-                    font-weight: $fw-normal;
-                    line-height: 1.25em;
+                .highlight {
+                    background-color: $white;
+                    padding: 10px $standard-padding;
+                    line-height: calc(1.5em + $standard-padding);
                 }
             }
-            
-            .testimonial {
-                padding-inline: $standard-padding;
-                display: grid;
-                place-content: center;
-                blockquote {
-                    margin-bottom: $standard-padding;
-                    font-size: $fs-l;
-                    font-weight: $fw-normal;
-                    text-align: center;
-                    padding: $standard-padding;
-                    width: calc(100% - $standard-padding);
-                    background-color: $purple;
-                    line-height: 1.75em;
-                    box-shadow: $standard-padding $standard-padding 0px 0px rgba($light-purple, 0.5);
+        }
+    }
 
-                    .highlight {
-                        background-color: $white;
-                        padding: 10px $standard-padding;
-                        line-height: calc(1.5em + $standard-padding);
-                    }
-                }
+
+    @media only screen and (max-width: $tablet-width) {
+        .about-body {
+            flex-direction: column;
+            background-color: transparent;
+            
+            .text {
+                background-color: $white;
+                width: 100vw;
+                padding: calc(4 * $standard-padding) $standard-padding;
+                max-width: none;
+            }
+
+            .testimonial {
+                width: 100vw;
+                max-width: none;
             }
         }
     }
