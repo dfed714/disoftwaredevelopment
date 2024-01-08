@@ -704,6 +704,7 @@ button:hover {
             padding-inline: $standard-padding;
             align-items: center;
             gap: $standard-padding;
+            margin-bottom: calc(4 * $standard-padding);
 
             h2 {
                 font-size: $fs-m;
