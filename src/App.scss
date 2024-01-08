@@ -108,6 +108,7 @@ button:hover {
         padding: calc($standard-padding / 4);
         color: $white;
         font-weight: $fw-normal;
+        padding-inline: $standard-padding;
     }
 
     .nav-btn:not(.logo):hover {
