@@ -2,6 +2,7 @@ import "../App.scss";
 import client from "../client";
 import imageUrlBuilder from "@sanity/image-url";
 import React, { useState, useEffect, useRef } from "react";
+import BlockContent from "@sanity/block-content-to-react";
 
 const builder = imageUrlBuilder(client);
 function urlFor(source) {
@@ -52,6 +53,7 @@ export default function Projects() {
         `*[_type == "projects"]{
         name,
         url, 
+        person,
         testimony,
         image{
             asset->{
@@ -84,22 +86,26 @@ export default function Projects() {
       <div className="slider" ref={slider}>
         {projectData &&
           projectData.map((project, index) => {
-            const slideStyles = {
-              minWidth: "100%",
-              height: "90%",
-              backgroundImage: `url(${project.image.asset.url})`,
-              backgroundSize: "cover",
-              backgroundPosition: "top center",
-              backgroundRepeat: "no-repeat",
-            };
             return (
-              <a
+              <div
                 className="slide"
                 key={index}
                 href={project.url}
                 aria-label={`Link to ${project.name}`}
-                style={slideStyles}
-              ></a>
+              >
+                <img
+                  src={project.image.asset.url}
+                  alt={project.name}
+                  className="slide-image"
+                />
+                <BlockContent
+                  projectId={"kzzlqcij"}
+                  dataset={"production"}
+                  blocks={project.testimony}
+                  className={"slide-text"}
+                />
+                <p>{project.person}</p>
+              </div>
             );
           })}
       </div>

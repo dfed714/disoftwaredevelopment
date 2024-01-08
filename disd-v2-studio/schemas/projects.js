@@ -24,6 +24,11 @@ export default defineType({
       type: 'url',
     }),
     defineField({
+      name: 'person',
+      title: 'Person',
+      type: 'string',
+    }),
+    defineField({
       name: 'testimony',
       title: 'Testimony',
       type: 'array',

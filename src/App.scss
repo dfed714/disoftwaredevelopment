@@ -96,11 +96,12 @@ button:hover {
 
     .nav-btn {
         background: $purple;
-        border: none;
+        border: 1px solid transparent;
+        border-radius: 5px;
         font-size: $fs-s;
         transition: all 500ms;
         padding: calc($standard-padding / 4);
-        color: $black;
+        color: $white;
         font-weight: $fw-normal;
     }
 
@@ -112,6 +113,7 @@ button:hover {
         background: none;
         font-family: Ahsing;
         font-size: $fs-xl;
+        color: $black;
         padding: 0;
         height: calc($fs-xl - 10px);
         letter-spacing: -0.1em;
@@ -475,7 +477,6 @@ button:hover {
 
         .slider {
             width: 100%;
-            aspect-ratio: 1.75/1;
             display: flex;
             align-items: flex-start;
             transition: all 500ms ease-in;
@@ -483,9 +484,49 @@ button:hover {
             scroll-snap-type: x mandatory;
             scroll-padding: 0;
             scroll-behavior: smooth;
+            -webkit-scroll-color: $dark-grey;
+            background-color: $light-grey;
+
 
             .slide {
                 scroll-snap-align: start;
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: $standard-padding;
+
+                .slide-image {
+                    width: 100vw;
+                    aspect-ratio: 1.9/1;
+                    object-fit: cover;
+                    object-position: top center;
+                }
+
+                p:first-of-type {
+                    font-size: $fs-s;
+                    color: $dark-grey;
+                    line-height: 1.5em;
+                    font-weight: $fw-normal;
+                }
+                
+                p:nth-of-type(2) {
+                    font-size: $fs-s;
+                    color: $black;
+                    font-weight: $fw-normal;
+                    padding-bottom: calc(2 * $standard-padding);
+
+                }
+
+                p:first-of-type:before {
+                    content: '"'
+                }
+
+                p:first-of-type:after {
+                    content: '"'
+                }
+                
             }
 
         }
@@ -505,6 +546,7 @@ button:hover {
                 background: $dark-grey;
                 border-radius: 20px;
             }
+
     }
 
     // CONTACT
