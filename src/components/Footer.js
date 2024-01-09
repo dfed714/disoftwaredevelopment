@@ -66,11 +66,7 @@ export default function Footer() {
           <p>DI Software Development Limited</p>
         </li>
         <li>
-          <a
-            href="../Privacy Policy _ Queen Pin.pdf"
-            target="_blank"
-            rel="noreferrer"
-          >
+          <a href="../PRIVACY POLICY.pdf" target="_blank" rel="noreferrer">
             <p>Privacy Policy</p>
           </a>
         </li>
