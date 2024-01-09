@@ -16,7 +16,7 @@ export default function Footer() {
           </a>
         </li>
       </ul>
-      <ul>
+      {/* <ul>
         <li>
           <p>Follow us:</p>
         </li>
@@ -60,7 +60,7 @@ export default function Footer() {
             </li>
           </ul>
         </li>
-      </ul>
+      </ul> */}
       <ul>
         <li>
           <p>DI Software Development Limited</p>
@@ -78,9 +78,6 @@ export default function Footer() {
           <p>All Rights Reserved</p>
         </li>
       </ul>
-      <a href="https://danielfeddy.com" target="_blank" rel="noreferrer">
-        <p>Website by Daniel Feddy</p>
-      </a>
     </div>
   );
 }

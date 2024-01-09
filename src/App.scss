@@ -250,7 +250,23 @@ button:hover {
 
         @media only screen and (orientation: landscape) and (max-height: 800px) {
             .home-body {
+                margin-top: calc(-1 * $standard-padding);
+                .text {
+                    h1, .highlight {
+                        font-size: clamp($fs-l, 10vw, $fs-xxl);
+                    }
+                }
+            }
+        }
+
+        @media only screen and (orientation: landscape) and (max-height: 600px) {
+            .home-body {
                 margin-top: calc(2 * $standard-padding);
+                .text {
+                    h1, .highlight {
+                        font-size: clamp($fs-l, 10vw, $fs-xxl);
+                    }
+                }
             }
         }
 
