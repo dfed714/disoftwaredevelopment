@@ -12,7 +12,6 @@ export default function Contact() {
       },
       { threshold: 0.15 }
     );
-    console.log(isIntersecting);
     observer.observe(ref.current);
 
     return () => observer.disconnect();

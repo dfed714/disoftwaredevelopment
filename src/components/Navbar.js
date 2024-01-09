@@ -30,11 +30,22 @@ export default function Navbar() {
           </button>
         </div>
         <div className="nav-btn-container">
-          <button className="nav-btn logo" aria-label="Home">
+          <button
+            className="nav-btn logo"
+            aria-label="Home"
+            onClick={() => navFunc("home")}
+          >
             DI
           </button>
         </div>
         <div className="desktop-nav-btns">
+          <button
+            className="nav-btn"
+            aria-label="Menu"
+            onClick={() => navFunc("about")}
+          >
+            ABOUT
+          </button>
           <button
             className="nav-btn"
             aria-label="Menu"
@@ -48,13 +59,6 @@ export default function Navbar() {
             onClick={() => navFunc("projects")}
           >
             TESTIMONIALS
-          </button>
-          <button
-            className="nav-btn"
-            aria-label="Menu"
-            onClick={() => navFunc("contact")}
-          >
-            CONTACT
           </button>
         </div>
         <div className="nav-btn-container">
@@ -72,6 +76,20 @@ export default function Navbar() {
         </div>
       </header>
       <div className="menu display-none" ref={menu}>
+        <button
+          className="nav-btn"
+          aria-label="Menu"
+          onClick={() => navFunc("home")}
+        >
+          HOME
+        </button>
+        <button
+          className="nav-btn"
+          aria-label="Menu"
+          onClick={() => navFunc("about")}
+        >
+          ABOUT
+        </button>
         <button
           className="nav-btn"
           aria-label="Menu"

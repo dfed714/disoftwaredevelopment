@@ -9,10 +9,10 @@ export default function Footer() {
         </li>
         <li>
           <a
-            href="mailto:daniel.feddy0123@gmail.com"
-            aria-label="Email Link to daniel.feddy0123@gmail.com"
+            href="mailto:info@disoftwaredevelopment.com"
+            aria-label="Email Link to info@disoftwaredevelopment.com"
           >
-            <p>daniel.feddy0123@gmail.com</p>
+            <p>info@disoftwaredevelopment.com</p>
           </a>
         </li>
       </ul>
