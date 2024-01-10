@@ -830,10 +830,6 @@ button:hover {
         .section {
             padding-top: calc( 4 * $standard-padding);
         }
-
-        .section {
-            scroll-margin-top: 0;
-        }
     }
 
     @media only screen and (max-width: 480px) {
