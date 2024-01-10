@@ -6,7 +6,6 @@ export default function Home() {
   const ref = useRef();
   const navbar = document.querySelector(".navbar");
   const app = document.querySelector(".App");
-  console.log(navbar, app);
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {

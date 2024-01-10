@@ -104,10 +104,10 @@ export default function Projects() {
         Swipe through to see <i className="fa-solid fa-arrow-right-long"></i>
       </p>
       <div className="slider-btns">
-        <button onClick={goToPreviousSlide}>
+        <button onClick={goToPreviousSlide} aria-label="Previous Slide">
           <i className="fa-solid fa-circle-arrow-left"></i>
         </button>
-        <button onClick={goToNextSlide}>
+        <button onClick={goToNextSlide} aria-label="Next Slide">
           <i className="fa-solid fa-circle-arrow-right"></i>
         </button>
       </div>

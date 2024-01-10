@@ -397,6 +397,8 @@ button:hover {
             align-items: center;
             width: 100vw;
             .service-img {
+                width: 100%;
+                height: 100%;
                 max-height: max(300px, 30vw);
                 object-fit: cover;
                 object-position: center 65%;

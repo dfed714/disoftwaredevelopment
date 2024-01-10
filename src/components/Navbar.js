@@ -32,7 +32,7 @@ export default function Navbar() {
         <div className="nav-btn-container">
           <button
             className="nav-btn logo"
-            aria-label="Home"
+            aria-label="Logo, click to go to home page"
             onClick={() => navFunc("home")}
           >
             DI
@@ -41,21 +41,21 @@ export default function Navbar() {
         <div className="desktop-nav-btns">
           <button
             className="nav-btn"
-            aria-label="Menu"
+            aria-label="About us page"
             onClick={() => navFunc("about")}
           >
             ABOUT
           </button>
           <button
             className="nav-btn"
-            aria-label="Menu"
+            aria-label="Our services page"
             onClick={() => navFunc("services")}
           >
             SERVICES
           </button>
           <button
             className="nav-btn"
-            aria-label="Menu"
+            aria-label="Our testimonials page"
             onClick={() => navFunc("projects")}
           >
             TESTIMONIALS
