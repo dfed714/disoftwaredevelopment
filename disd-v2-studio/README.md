@@ -6,8 +6,6 @@ My personal portfolio site for DISoftwareDevelopment — the freelance developme
 - React
 - Sanity CMS
 - Netlify (Hosting & Forms)
-- Tailwind CSS
-- Framer Motion
 
 ### ✅ Features
 - CMS-driven content and portfolio grid
