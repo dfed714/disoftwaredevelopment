@@ -1,11 +1,24 @@
-# Sanity Blogging Content Studio
+# DISoftwareDevelopment.com
 
-Congratulations, you have now installed the Sanity Content Studio, an open source real-time content editing environment connected to the Sanity backend.
+My personal portfolio site for DISoftwareDevelopment — the freelance development studio I launched. This client-facing platform showcases my work, services, and approach, and has been used to generate inbound leads.
 
-Now you can do the following things:
+### 🔧 Tech Stack
+- React
+- Sanity CMS
+- Netlify (Hosting & Forms)
+- Tailwind CSS
+- Framer Motion
 
-- [Read “getting started” in the docs](https://www.sanity.io/docs/introduction/getting-started?utm_source=readme)
-- Check out the example frontend: [React/Next.js](https://github.com/sanity-io/tutorial-sanity-blog-react-next)
-- [Read the blog post about this template](https://www.sanity.io/blog/build-your-own-blog-with-sanity-and-next-js?utm_source=readme)
-- [Join the community Slack](https://slack.sanity.io/?utm_source=readme)
-- [Extend and build plugins](https://www.sanity.io/docs/content-studio/extending?utm_source=readme)
+### ✅ Features
+- CMS-driven content and portfolio grid
+- Animated hero and image slider
+- Custom-designed responsive UI/UX
+- Contact form powered by Netlify Forms
+- SEO-optimized and mobile-first
+
+### 🎯 Purpose
+Created as my official brand site for freelancing after establishing the company. Designed, developed, and deployed independently.
+
+### 🌐 Live Site
+[https://disoftwaredevelopment.com](https://disoftwaredevelopment.com)
+
